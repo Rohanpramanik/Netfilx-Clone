@@ -2,6 +2,21 @@
 
 - create-react-app
 - configured tailwindCSS
+- Routing 
+- Header
+- Login page
+- Sign In/Sign Up Form
+- Form Validation
+- useRef Hook
+- Firebase  Setup
+- deployment to the production
+
+
+# Firebase deployment
+- install firebase CLI (npm install -g firebase-tools)
+- firebase login
+- firebase init (To select hosting)
+- firebase deploy
 
 # Features
 - login/signUp
