@@ -6,10 +6,14 @@
 - Header
 - Login page
 - Sign In/Sign Up Form
-- Form Validation
 - useRef Hook
-- Firebase  Setup
+- Form Validation
+- Firebase Setup
+- Firebase Authentication
 - deployment to the production
+- implement Sign In user API
+- created Redux Store with userSlice
+
 
 
 # Firebase deployment

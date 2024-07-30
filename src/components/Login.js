@@ -11,7 +11,7 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
 
-  const name = useRef(null);
+  // const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
