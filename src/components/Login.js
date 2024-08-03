@@ -5,13 +5,20 @@ import { auth } from "../utilis/Firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { addUser } from "../utilis/UserSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
 
-  // const name = useRef(null);
+  const nevigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -33,6 +40,26 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/64009097?v=4",
+          })
+            .then(() => {
+              // Profile updated!, Store updated with latest value
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              nevigate("/Browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -50,6 +77,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          nevigate("/Browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -75,14 +103,14 @@ const Login = () => {
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="absolute w-4/12 p-10 my-36 mx-auto left-0 right-0 text-white bg-black rounded-md bg-opacity-80"
+        className="absolute w-3/12 p-10 my-36 mx-auto left-0 right-0 text-white bg-black rounded-md bg-opacity-80"
       >
         <div className="text-2xl font-bold my-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </div>
         {!isSignInForm && (
           <input
-            // ref={name}
+            ref={name}
             type="text"
             placeholder="Name"
             className="w-full p-3 my-2 bg-gray-700 rounded-md bg-opacity-60"

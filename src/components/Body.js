@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utilis/Firebase";
-import { addUser } from "../utilis/UserSlice";
+import { addUser, removeUser } from "../utilis/UserSlice";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -25,15 +25,17 @@ const Body = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
-        dispatch(addUser({uid: uid, email: email, displayName: displayName}))
+        dispatch(addUser({uid: uid, email: email, displayName: displayName}));
       } else {
-        dispatch()
+        dispatch(removeUser());
       }
     });
   }, []);
 
   return (
-    <RouterProvider router={appRouter}/>
+    <div>
+      <RouterProvider router={appRouter}/>
+    </div>
   );
 };
 

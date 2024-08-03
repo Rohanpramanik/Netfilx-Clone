@@ -13,6 +13,9 @@
 - deployment to the production
 - implement Sign In user API
 - created Redux Store with userSlice
+- design header with photo and sign out btn
+- created signout feature
+- update store with latest value on signUp
 
 
 

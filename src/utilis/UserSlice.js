@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import userEvent from "@testing-library/user-event";
 
 const UserSlice = createSlice({
   name: "user",
@@ -15,4 +14,4 @@ const UserSlice = createSlice({
 });
 
 export const { addUser, removeUser } = UserSlice.actions;
-export default userEvent.reducer;
+export default UserSlice.reducer;
