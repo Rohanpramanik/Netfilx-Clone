@@ -7,15 +7,14 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { addUser } from "../utilis/UserSlice";
 import { useDispatch } from "react-redux";
+import { BACKGROUND_IMAGE, DEFAULT_PROFILE_PHOTO } from "../utilis/Constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
 
-  const nevigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -23,8 +22,6 @@ const Login = () => {
   const password = useRef(null);
 
   const handleSubmit = () => {
-    // const email = email.current.value;
-    // const password = password.current.value;
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
 
@@ -42,7 +39,7 @@ const Login = () => {
           console.log(user);
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/64009097?v=4",
+            photoURL: DEFAULT_PROFILE_PHOTO,
           })
             .then(() => {
               // Profile updated!, Store updated with latest value
@@ -55,7 +52,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              nevigate("/Browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -76,8 +72,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          nevigate("/Browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -97,7 +91,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/21a8ba09-4a61-44f8-8e2e-70e949c00c6f/6678e2ea-85e8-4db2-b440-c36547313109/IN-en-20240722-POP_SIGNUP_TWO_WEEKS-perspective_WEB_3457a8b1-284d-4bb5-979e-2a2e9bb342b3_medium.jpg"
+          src={BACKGROUND_IMAGE}
           alt="logo"
         />
       </div>

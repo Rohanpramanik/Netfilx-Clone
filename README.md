@@ -16,6 +16,12 @@
 - design header with photo and sign out btn
 - created signout feature
 - update store with latest value on signUp
+- unsubscribe the OnauthStateChanged callback
+- get data from TNDB movies list API
+- created movieSlice
+- updated store with movie
+- created custem hook for fetching data
+- embeded the youtube video and make it auto play
 
 
 
