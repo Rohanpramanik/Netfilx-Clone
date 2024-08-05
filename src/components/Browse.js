@@ -5,13 +5,15 @@ import { useDispatch } from 'react-redux';
 import { addNowPlayingMovies } from '../utilis/moviesSlice';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import Maincontainer from './Maincontainer';
+import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
   useNowPlayingMovies();
   return (
-    <div>
+    <div className='bg-black text-white'>
       <Header/>
       <Maincontainer />
+      <SecondaryContainer/>
     </div>
   )
 }
