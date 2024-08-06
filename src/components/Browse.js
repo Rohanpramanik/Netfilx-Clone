@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Header from './Header'
-import { API_OPTIONS } from '../utilis/Constant';
-import { useDispatch } from 'react-redux';
-import { addNowPlayingMovies } from '../utilis/moviesSlice';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import Maincontainer from './Maincontainer';
 import SecondaryContainer from './SecondaryContainer';
+import usePopularMovie from '../hooks/usePopularMovie';
+import useTopRatedMovie from '../hooks/useTopRatedMovie';
 
 const Browse = () => {
   useNowPlayingMovies();
+  usePopularMovie();
+  useTopRatedMovie()
   return (
     <div className='bg-black text-white'>
       <Header/>

@@ -1,0 +1,20 @@
+const MovieDataObj = [
+    {
+        title: "Now Playing",
+        movies: "movielist",
+    },
+    {
+        title: "Now Playing",
+        movies:  "movielist"
+    },
+    {
+        title: "Now Playing",
+        movies: "movielist",
+    },
+    {
+        title: "Now Playing",
+        movies:  "movielist"
+    },
+];
+
+export default MovieDataObj;
