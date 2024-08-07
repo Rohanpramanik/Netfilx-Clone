@@ -5,11 +5,13 @@ import { auth } from "../utilis/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utilis/UserSlice";
 import { DEFAULT_PROFILE_PHOTO, NETFLIX_LOGO } from "../utilis/Constant";
+import { toggleGptSearchView } from "../utilis/gptSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const gptToggle = useSelector((store) => store.gpt);
 
   const handleSignout = () => {
     signOut(auth)
@@ -17,6 +19,10 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+  };
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
   };
 
   useEffect(() => {
@@ -49,6 +55,9 @@ const Header = () => {
       />
       {user && (
         <div className="flex p-2 justify-center items-center">
+          <button onClick={handleGptSearchClick} className="px-2 py-1 m-2 rounded-md bg-yellow-100 bg-transparent bg-opacity-45">
+            GPT search
+          </button>
           <img
             className="p-2 w-12 h-auto"
             alt="userIcon"

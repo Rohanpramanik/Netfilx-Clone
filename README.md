@@ -22,6 +22,9 @@
 - updated store with movie
 - created custem hook for fetching data
 - embeded the youtube video and make it auto play
+- created movie card
+- added multiple movie list with different type like trending, romance top rated
+- Gpt serach feature
 
 
 
